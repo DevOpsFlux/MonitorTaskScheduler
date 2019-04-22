@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id='Description'>This example shows how to create a Grid from JSON data.</title>
+    <link rel="stylesheet" href="./jqwidgets/styles/jqx.base.css" type="text/css" />
+	<meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />	
+    <script type="text/javascript" src="./scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="./jqwidgets/jqxgrid.selection.js"></script> 
+    <script type="text/javascript" src="./jqwidgets/jqxgrid.columnsresize.js"></script> 
+    <script type="text/javascript" src="./jqwidgets/jqxgrid.sort.js"></script> 
+	<script type="text/javascript" src="./jqwidgets/jqxdata.js"></script> 
+    <script type="text/javascript" src="./scripts/demos.js"></script>
+    <script type="text/javascript">
+		
+
+		// # Reference
+		// https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxdataadapter/jquery-data-adapter.htm
+		// https://code.msdn.microsoft.com/Advanced-JQX-Grid-With-All-37dccb56/sourcecode?fileId=155161&pathId=1530520554
+		// https://www.jqwidgets.com/community/topic/header-row-for-grid/
+
+		// http://localhost/Taskhtml/bindingtojson.htm
+
+        $(document).ready(function () {
+
+
+            //var url = "../../sampledata/beverages.txt";
+			//var url = "./sampledata/beverages.txt"; // http://localhost/op/jqwidgets/jqwidgets-ver6.2.0/demos/sampledata/beverages.txt
+			//var url = "./sampledata/taskjson.txt";
+			//var url = "http://localhost/Taskhtml/sampledata/taskjson.txt";
+			//var url = "http://127.0.0.1:804/Index.aspx";
+			//var url = "http://devtask.flux.com/Index.aspx";
+			var url = "http://devunit.flux.com/GateAPI/JsonAPI.aspx?p=http://devtask.flux.com/Index";
+
+            // Prepare the response data
+            var source =
+            {
+                datatype: "json",
+                datafields: [
+                    { name: 'Name', type: 'string' },
+                    { name: 'State', type: 'string' },
+                    { name: 'Enabled', type: 'string' },
+                    { name: 'LastTaskResult', type: 'string' },
+                    { name: 'LastRunTime', type: 'string' },
+                    { name: 'NextRunTime', type: 'string' },
+                    { name: 'RunningTime', type: 'string' }
+                ],
+                id: 'id',
+                url: url
+            };
+//console.log(source);
+           var dataAdapter = new $.jqx.dataAdapter(source);
+
+/* 
+			var url = "http://localhost/Taskhtml/sampledata/taskjson.txt";
+			//var url = " ";
+
+			// Prepare the response data
+			var source = {
+				datatype: "json",
+				datafields: [
+                    { name: 'Name', type: 'string' },
+                    { name: 'State', type: 'string' },
+                    { name: 'Enabled', type: 'string' },
+                    { name: 'LastTaskResult', type: 'string' },
+                    { name: 'LastRunTime', type: 'string' },
+                    { name: 'NextRunTime', type: 'string' }
+				]
+			};
+			// Get the shipments
+			var settings = {
+				loadServerData: function(serverdata,source,callback){
+					MN.ajax({
+						url: url,
+						crossDomain: true,
+						dataType: source.datatype,
+						success: function(data){
+							console.log(data);
+							// Send the data to the data adapter
+							callback({ records: data });
+						},
+						error: function(msg){
+							console.log('error');	
+						}
+					});
+				}
+			};
+
+			var dataAdapter = new $.jqx.dataAdapter(source,settings);
+*/
+/*
+var settings2 = $.ajax({
+    dataType: "json",
+    url: "http://127.0.0.1:804/Index.aspx",
+    type: "POST",
+    crossDomain: true,
+    scriptCharset: "utf-8"
+});
+
+alert(settings2);
+
+			
+			var dataAdapter = new $.jqx.dataAdapter(settings2);
+*/
+
+            $("#grid").jqxGrid(
+            {
+                //width: getWidth('Grid'),
+                width: 1200,
+				height:1500,
+                source: dataAdapter,
+                //columnsresize: true,
+				sortable: true,
+                ready: function () {
+                    $("#grid").jqxGrid('sortby', 'LastTaskResult', 'desc'); //asc desc
+                },
+                columns: [
+					  { text: 'Name', datafield: 'Name', width: 150 },
+					  { text: 'State', datafield: 'State', width: 80},
+					  { text: 'Enabled', datafield: 'Enabled', width: 80 },
+					  { text: 'LastTaskResult', datafield: 'LastTaskResult', width: 110 },
+					  { text: 'LastRunTime', datafield: 'LastRunTime', width: 170 },
+					  { text: 'NextRunTime', datafield: 'NextRunTime', width: 170 },
+					  { text: 'RunningTime', datafield: 'RunningTime', width: 170 }
+				],
+				showtoolbar: true,
+                toolbarheight: 20,
+                rendertoolbar: function (toolbar) {
+                    var gridTitle = "<div style='width: 100%; height: 100%; text-align: center;'>Batch Test 2019-02-01 10:37</div>";
+                    toolbar.append(gridTitle);
+                }
+            });
+        });
+
+// https://www.jqwidgets.com/jquery-widgets-documentation/documentation/jqxgrid/jquery-grid-sorting.htm
+
+//		$("#grid").bind('bindingcomplete', function()
+//		{
+//			$("#grid").jqxGrid('sortby', 'Name', 'des');
+//		})
+
+		$("#grid").bind("sort", function (event) {
+			var sortinformation = event.args.sortinformation;
+			var sortdirection = sortinformation.sortdirection;
+			var sortcolumn = sortinformation.sortcolumn;
+		});
+
+    </script>
+</head>
+<body class='default'>
+        <div id="grid"></div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+https://docs.microsoft.com/en-us/windows/desktop/taskschd/task-scheduler-error-and-success-constants
+
+0 or 0x0: The operation completed successfully.
+1 or 0x1: Incorrect function called or unknown function called.
+2 or 0x2: File not found.
+10 or 0xa: The environment is incorrect.
+0x41300: Task is ready to run at its next scheduled time.
+0x41301: Task is currently running.
+0x41302: Task is disabled.
+0x41303: Task has not yet run.
+0x41304: There are no more runs scheduled for this task.
+0x41306: Task is terminated.
+0x8004130F: Credentials became corrupted (*)
+0x8004131F: An instance of this task is already running.
+0x80070002: Basically something like file not available (2147942402)
+0x800704DD: The service is not available (is ‘Run only when an user is logged on’ checked?)
+0xC000013A: The application terminated as a result of a CTRL+C.
+0xC06D007E: Unknown software exception
+
+
+devBatch2	Disabled	False	267045	2019-01-15-13-22-03	0001-01-01-00-00-00
+
+16진수  -> 10진수
+0x41325(16진수) -> 267045(10진수)
+
+
+- '0'
+
+- '1' (for tasks containing a popup action)
+
+- '267009': currently running
+
+- '267014': was terminated by user
+
+- '267045': queued
+
+- '-2147216609': instance of this task already running -> being taken care of by the separate monitor
+
+- '-2147750687': task already running -> being taken care of by the separate monitor
+
+
+if (TaskService.Instance.GetTask("MyTask").LastTaskResult != 0)
+   MessageBox.Show("This program has an error.");
+
+
+  string.format("(0:x}", d);

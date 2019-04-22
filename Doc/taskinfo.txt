@@ -1,0 +1,77 @@
+=======================================================================================================================================
+
+# TaskScheduler Library
+- https://www.nuget.org/packages/Microsoft.Win32.TaskScheduler/
+
+# TaskService Class
+- https://dahall.github.io/TaskScheduler/html/T_Microsoft_Win32_TaskScheduler_TaskService.htm
+
+# TaskService Methods
+- https://dahall.github.io/TaskScheduler/html/Methods_T_Microsoft_Win32_TaskScheduler_TaskService.htm
+
+# Task Scheduler Error and Success Constants
+- https://docs.microsoft.com/en-us/windows/desktop/taskschd/task-scheduler-error-and-success-constants
+
+# jqgrid UI 
+- jqwidgets > jqgrid
+- jQWidgets v6.2.0 (2018-Dec)
+- https://jqwidgets.com/
+
+
+=======================================================================================================================================
+
+
+https://docs.microsoft.com/en-us/windows/desktop/taskschd/daily-trigger-example--xml-
+
+https://docs.microsoft.com/ko-kr/windows/desktop/TaskSchd/schtasks
+
+
+https://superuser.com/questions/485563/how-to-import-a-scheduled-task-from-an-xml-file
+
+https://social.technet.microsoft.com/Forums/en-US/d59e1f38-f565-4a3d-8e37-6b2a8c2a5e91/task-scheduler-failures?forum=windowsserver2008r2management
+
+
+
+schtasks.exe /Create /XML task.xml /tn taskname
+schtasks /create /XML /tn
+
+
+SCHTASKS /Query  [Connect_Options] [/FO format | /XML] [/NH] [/V] [/TN taskname]
+
+
+schtasks.exe /Query /tn "[TEST] TestBatch"
+
+schtasks.exe /Query /XML test.xml | FIND/I "Test" 
+
+schtasks.exe /Query | FIND/I "Test" 
+
+
+
+schtasks.exe /XML test.xml
+schtasks.exe /Run | FIND/I "Test" 
+
+
+
+schtasks.exe /query  /FO LIST /tn "GoogleUpdateTaskMachineUA" > test.xml
+schtasks.exe /query  /FO XML /tn "GoogleUpdateTaskMachineUA" > test.xml
+
+# Path
+schtasks.exe /query  /tn "\Batch\TestBatch"
+
+
+
+schtasks.exe /query  /XML /tn "GoogleUpdateTaskMachineUA" > googletest.xml
+
+
+# Path
+schtasks.exe /query  /tn "\Batch\TestBatch"
+schtasks.exe /query /tn "GoogleUpdateTaskMachineUA" /FO LIST
+
+schtasks.exe /Query | FIND/I "Test" 
+
+
+
+
+https://www.nuget.org/packages/TaskScheduler/
+
+https://github.com/dahall/taskscheduler 
