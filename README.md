@@ -32,7 +32,7 @@ Windows Server Task Scheduler Monitoring
 - https://docs.microsoft.com/en-us/windows/desktop/taskschd/task-scheduler-error-and-success-constants
 ```
 
-## 4. TaskList SourceUI 참고 라이브러리
+## 4. TaskList Grid UI 참고 라이브러리
 ```
 # jqgrid UI 
 - jqwidgets > jqgrid
