@@ -1,23 +1,23 @@
 # MonitorTaskScheduler
 Windows Server Task Scheduler Monitoring
 
-## 1. ÇÁ·ÎÁ§Æ® Á¤º¸ ¹× ¹öÁ¯
+## 1. í”„ë¡œì íŠ¸ ì •ë³´ ë° ë²„ì ¼
 
 ### *[ TaskWebNew Solution ]	
 ### *[ TaskWebNew.csproj ]	
 
-| ÇÁ·ÎÁ§Æ® | ¼³¸í | .NET¹öÁ¯ | TaskWebNew¹öÁ¯ |
+| í”„ë¡œì íŠ¸ | ì„¤ëª… | .NETë²„ì ¼ | TaskWebNewë²„ì ¼ |
 | -------- | -------- | -------- | -------- |
 | TaskWebNew | Task Scheduler Monitor	| .NET 4.5	| TaskWebNew 1.0.0.0 |
 
 
-## 2. TaskWebNew ÂüÁ¶
+## 2. TaskWebNew ì°¸ì¡°
 - using System.Xml.Linq;
 - using System.Text.RegularExpressions;
 - using Microsoft.Win32.TaskScheduler;
 
 
-## 3. TaskWebNew Âü°í ¶óÀÌºê·¯¸®
+## 3. TaskWebNew ì°¸ê³  ë¼ì´ë¸ŒëŸ¬ë¦¬
 ```
 # TaskScheduler Library
 - https://www.nuget.org/packages/Microsoft.Win32.TaskScheduler/
@@ -32,15 +32,15 @@ Windows Server Task Scheduler Monitoring
 - https://docs.microsoft.com/en-us/windows/desktop/taskschd/task-scheduler-error-and-success-constants
 ```
 
-## 4. TaskList SourceUI Âü°í ¶óÀÌºê·¯¸®
+## 4. TaskList Grid UI ì°¸ê³  ë¼ì´ë¸ŒëŸ¬ë¦¬
 ```
 # jqgrid UI 
 - jqwidgets > jqgrid
 - jQWidgets v6.2.0 (2018-Dec)
-- https://jqwidgets.com/
+- https://jqwidgets.com
 ```
 
-## 5. TaskList »ùÇÃ
+## 5. TaskList ìƒ˜í”Œ 
 
 ![Monitor](./img/task2.JPG)
 
