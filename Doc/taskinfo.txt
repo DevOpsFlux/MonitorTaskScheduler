@@ -75,3 +75,27 @@ schtasks.exe /Query | FIND/I "Test"
 https://www.nuget.org/packages/TaskScheduler/
 
 https://github.com/dahall/taskscheduler 
+
+
+=====================================================================================
+
+schtasks /query /v /fo csv > output.csv
+
+# export
+schtasks /Query /XML > "tasklist.xml"
+
+# import
+schtasks.exe /Create /XML tasklist.xml 
+
+# task export
+schtasks /Query /XML > "tasklist.xml"
+
+Export-ScheduledTask -TaskName "task folder location\task name" > "$env:UserProfile\Desktop\name.xml"
+
+Get-ScheduledTask | foreach {
+	Export-ScheduledTask -TaskName $_.TaskName -TaskPath $_.TaskPath |
+	Out-File (Join-Path "C:\Users\Me\Desktop\task" "$($_.TaskName).xml")
+}
+
+# task import
+schtasks.exe /Create /XML task.xml /tn taskname
